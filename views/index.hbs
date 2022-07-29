@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/solid.min.css" integrity="sha512-EvFBzDO3WBynQTyPJI+wLCiV0DFXzOazn6aoy/bGjuIhGCZFh8ObhV/nVgDgL0HZYC34D89REh6DOfeJEWMwgg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Weather App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        .box {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .middlediv {
+            margin-top: 30px;
+            height: 60%;
+            width: 27%;
+            border-radius: 8px;
+            background-color: #b6cdcd;
+        }
+
+        .input {
+            margin-bottom: 20px;
+        }
+
+        .input .fa-solid {
+            /* width: 1.8%;
+            position: absolute;
+            top: 29.6%;
+            cursor: pointer;
+            left: 57%; */
+            cursor: pointer;
+        }
+
+        input {
+            padding: 5px 10px;
+            border: 1px solid whitesmoke;
+            border-radius: 10px;
+        }
+
+        .up {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            height: 40%;
+            border-radius: 8px;
+        }
+
+        #status i {
+            font-size: 60px;
+            color: #f9d71c;
+        }
+
+        .down {
+            height: 70%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            visibility: visible;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgb(160, 175, 174);
+            border-top-left-radius: 44%;
+            border-top-right-radius: 44%;
+        }
+
+        .info {
+            margin: 20px;
+        }
+
+        .temp {
+            font-weight: 500;
+            font-size: 20px;
+            color: azure;
+        }
+
+        .foot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 40px;
+            color: #dff0ea;
+        }
+
+        .humadi {
+            width: 50%;
+            height: 100%;
+        }
+
+        .feels {
+            height: 100%;
+            width: 50%;
+        }
+        @media (max-width:900px) {
+            .middlediv{
+                width: 48%;
+                height: 70%;
+            }
+        }
+        @media (max-width:700px) {
+            .middlediv{
+                width: 56%;
+                height: 70%;
+            }
+        }
+        @media (max-width:500px) {
+            .middlediv{
+                width: 62%;
+                height: 70%;
+            }
+        }
+        @media (max-width:500px) {
+            .middlediv{
+                width: 70%;
+                height: 60%;
+            }
+        }
+        @media (max-width:380px) {
+            .middlediv{
+                width: 80%;
+                height: 50%;
+            }
+        }
+        @media (max-width:350px) {
+            .middlediv{
+                width:98%;
+                height: 40%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>Weather App</h2>
+        <div class="middlediv">
+            <div class="up">
+                <div class="input">
+                    <input type="text" placeholder="Enter your city" id="inputt" autocomplete="off">
+                    <!-- <img src="search.png" alt="img" id="imclick" onclick="ims()"> -->
+                        <i class="fa-solid fa-magnifying-glass" id="ss"></i>
+                </div>
+                    <div class="df" id="status">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+            </div>
+            <div class="down" id="dow">
+                <div class="place" id="city" align="center">
+                    <!-- <h2>Jaipur , IN</h2> -->
+                    <h2>city , country</h2>
+                </div>
+                <div class="info" id="tym">
+                    Day | date | time
+                </div>
+                <div class="temp" id="temm"> &nbsp; 0&deg;C
+                </div>
+                <div class="foot">
+                    <div class="humadi" align="center" id="humm"> Humadity:0%</div>
+                    <div class="feels" align="center" id="feel"> feels like: 0&deg;C</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    var info = document.getElementById('tym')
+var sub = document.getElementById('inputt')
+var days = [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
+]
+
+let currenttime = new Date();
+
+
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+var perios = "AM"
+const gettime = () => {
+    var now = new Date();
+    var date = now.getDate();
+    var month = now.getMonth();
+    var time = now.getHours();
+    if (time > 11) {
+        perios = "PM"
+        if (time > 12) time -= 12;
+    }
+    if (time < 10) {
+        time = "0" + time;
+    }
+    var min = now.getMinutes();
+    if (min < 10) {
+        min = "0" + min
+    }
+    return `${months[month]} ${date} | ${time}:${min} ${perios}`;
+};
+
+info.innerHTML = `${days[currenttime.getDay()]} | ${gettime()}`
+
+const name = document.getElementById('city')
+const tempr = document.getElementById('temm')
+const hum = document.getElementById('humm')
+const feel = document.getElementById('feel')
+const subbtn  = document.getElementById('ss');
+const tempstatus = document.getElementById('status')
+const down  = document.getElementById('dow');
+const getinfo = async (event) =>{
+   // event.preventDefault();
+    let ci = sub.value;
+        try{
+           let url = `https://api.openweathermap.org/data/2.5/weather?q=${ci}&appid=41720a0ca39f1ff33571e8accf5a3b5d`
+            const res = await fetch(url);
+            const data = await res.json();
+            const arr=[data];
+            const mood = arr[0].weather[0].main;
+            name.innerHTML = `<h2> ${data.name} , ${data.sys.country}</h2>`;
+            const tr = (data.main.temp-273).toFixed(0);
+            tempr.innerHTML = `&nbsp; ${tr}&deg;C`
+            hum.innerHTML = `Humidity: ${data.main.humidity}%`
+            feel.innerHTML = `feels Like:${(data.main.feels_like-273).toFixed(0)}&deg;C`
+            if(mood == "Clear"){
+                tempstatus.innerHTML = " <i class='fa-solid fa-sun' style='color: #f9d71c'></i>"
+            }else if( mood == "Rain"){
+                tempstatus.innerHTML = " <i class='fa-solid fa-cloud-rain' style='color: #a4b0be'></i>"
+            }else if(mood == "Mist"){
+                tempstatus.innerHTML = " <i class='fa-solid fa-cloud' style='color: #d9d9d9'></i>"
+            }else{
+                tempstatus.innerHTML = " <i class='fa-solid fa-cloud' style='color: #d9d9d9'></i>"
+            }
+        }catch{
+            dow.style.visibility="hidden";
+            alert("Enter right city")
+        dow.style.visibility="visible";
+        }
+
+}
+async function getinfos(){
+    let ci = sub.value;
+        try{
+           let url = `https://api.openweathermap.org/data/2.5/weather?q=${ci}&appid=41720a0ca39f1ff33571e8accf5a3b5d`
+            const res = await fetch(url);
+            const data = await res.json();
+            const arr=[data];
+            const mood = arr[0].weather[0].main;
+            name.innerHTML = `<h2> ${data.name} , ${data.sys.country}</h2>`;
+            const tr = (data.main.temp-273).toFixed(0);
+            tempr.innerHTML = `&nbsp; ${tr}&deg;C`
+            hum.innerHTML = `Humidity: ${data.main.humidity}%`
+            feel.innerHTML = `feels Like:${(data.main.feels_like-273).toFixed(0)}&deg;C`
+            if(mood == "Clear"){
+                tempstatus.innerHTML = " <i class='fa-solid fa-sun' style='color: #f9d71c'></i>"
+            }else if(mood == "Clouds" || mood == "Rain"){
+                tempstatus.innerHTML = " <i class='fa-solid fa-cloud-rain' style='color: #a4b0be'></i>"
+            }else if(mood == "Mist"){
+                tempstatus.innerHTML = " <i class='fa-solid fa-cloud' style='color: #d9d9d9'></i>"
+            }else{
+                tempstatus.innerHTML = " <i class='fa-solid fa-cloud' style='color: #d9d9d9'></i>"
+            }
+        }catch{
+            dow.style.visibility="hidden";
+            alert("Enter right city")
+            dow.style.visibility="visible";
+        }
+}
+subbtn.addEventListener('click',getinfo);
+sub.addEventListener('keypress',(e)=>{
+    if(e.key == 'Enter'){
+        getinfos();
+    }
+})
+</script>
+</body>
+</html>

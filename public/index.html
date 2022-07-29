@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Weather App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        .box {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .middlediv {
+            margin-top: 30px;
+            height: 60%;
+            width: 27%;
+            border-radius: 8px;
+            background-color: rgb(218, 227, 228);
+        }
+
+        .input {
+            margin-bottom: 20px;
+        }
+
+        .input .fa-solid {
+            /* width: 1.8%;
+            position: absolute;
+            top: 29.6%;
+            cursor: pointer;
+            left: 57%; */
+            cursor: pointer;
+        }
+
+        input {
+            padding: 5px 10px;
+            border: 1px solid whitesmoke;
+            border-radius: 10px;
+        }
+
+        .up {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            height: 40%;
+            border-radius: 8px;
+        }
+
+        .fa-sun {
+            font-size: 50px;
+            color: #f9d71c;
+        }
+
+        .down {
+            height: 70%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgb(160, 175, 174);
+            border-top-left-radius: 44%;
+            border-top-right-radius: 44%;
+        }
+
+        .info {
+            margin: 20px;
+        }
+
+        .temp {
+            font-weight: 500;
+            font-size: 20px;
+            color: azure;
+        }
+
+        .foot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 40px;
+            color: #dff0ea;
+        }
+
+        .humadi {
+            width: 50%;
+            height: 100%;
+        }
+
+        .feels {
+            height: 100%;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>Weather App</h2>
+        <div class="middlediv">
+            <div class="up">
+                <div class="input">
+                    <input type="text" value="Jaipur" id="inputt">
+                    <!-- <img src="search.png" alt="img" id="imclick" onclick="ims()"> -->
+                    <i class="fa-solid fa-magnifying-glass" onclick="ims()"></i>
+                </div>
+                <i class="fa-solid fa-sun"></i>
+            </div>
+            <div class="down">
+                <div class="place" id="city" align="center">
+                    <!-- <h2>Jaipur , IN</h2> -->
+                    <h2>Jaipur , IN</h2>
+                </div>
+                <div class="info" id="tym">
+                    Thu | July 24 | 11:40 Am
+                </div>
+                <div class="temp"> &nbsp; 29&deg;C
+                </div>
+                <div class="foot">
+                    <div class="humadi" align="center"> Humadity:60%</div>
+                    <div class="feels" align="center"> feels like: 30&deg;C</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../public/inde.js"></script>
+</html>
